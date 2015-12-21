@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="351dp"
+        android:layout_height="638dp"
+        android:text="When you can barely squeeze a workout into your day, taking time to focus on flexibility may feel like, well, a stretch. But stretching is an important part of fitness: It can improve your range of motion, increase circulation, and calm your mind—which may help fend off injuries and illness, as well as bring on a better night’s sleep. To limber up, try the following quick head-to-toe routine created by Dana Slamp, a senior yoga instructor at Pure Yoga, in New York City. Do the complete series once daily. Deepen each stretch with every exhalation, and stop if you feel any strain or pain."
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textStyle="normal"
+        android:id="@+id/textView2" />
+
+</LinearLayout>

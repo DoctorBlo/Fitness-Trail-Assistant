@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(A) Stand with your feet together and your arms straight overhead. Clasp your hands together, with your fingers interlaced and pointer fingers extended. Inhale as you reach upward.
+
+(B) Breathe out as you bend your upper body to the right. Take five slow breaths. Slowly return to the center. Repeat on the left side."
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textStyle="normal"
+        android:id="@+id/textView1" />
+</LinearLayout>
