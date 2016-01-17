@@ -14,6 +14,7 @@ import android.widget.TabHost;
 import com.example.msrazure.fitness.adapters.MyFragmentPagerAdapter;
 import com.example.msrazure.fitness.fragments.MapFragment1;
 import com.example.msrazure.fitness.fragments.MapFragment2;
+import com.example.msrazure.fitness.fragments.MapFragment3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public class FragmentMaps extends Fragment implements ViewPager.OnPageChangeList
 
         listFragments.add(new MapFragment1());
         listFragments.add(new MapFragment2());
-        listFragments.add(new MapFragment1());
+        listFragments.add(new MapFragment3());
         listFragments.add(new MapFragment2());
         listFragments.add(new MapFragment1());
         listFragments.add(new MapFragment2());
