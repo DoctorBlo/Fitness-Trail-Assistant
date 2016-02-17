@@ -15,6 +15,7 @@ import com.example.msrazure.fitness.adapters.MyFragmentPagerAdapter;
 import com.example.msrazure.fitness.fragments.MapFragment1;
 import com.example.msrazure.fitness.fragments.MapFragment2;
 import com.example.msrazure.fitness.fragments.MapFragment3;
+import com.example.msrazure.fitness.fragments.MapFragment5;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,11 +60,12 @@ public class FragmentMaps extends Fragment implements ViewPager.OnPageChangeList
         List<Fragment> listFragments = new ArrayList<Fragment>();
 
 
-        listFragments.add(new MapFragment1());
-        listFragments.add(new MapFragment2());
         listFragments.add(new MapFragment3());
         listFragments.add(new MapFragment2());
+        listFragments.add(new MapFragment5());
+
         listFragments.add(new MapFragment1());
+        listFragments.add(new MapFragment3());
         listFragments.add(new MapFragment2());
 
 

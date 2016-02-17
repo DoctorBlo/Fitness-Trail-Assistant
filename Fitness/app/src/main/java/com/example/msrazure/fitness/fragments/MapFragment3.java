@@ -2,7 +2,6 @@ package com.example.msrazure.fitness.fragments;
 
 import android.graphics.Color;
 import android.location.Location;
-import android.location.LocationListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.msrazure.fitness.R;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,9 +25,7 @@ import java.util.ArrayList;
 /**
  * Created by Polina on 17.01.2016.
  */
-public class MapFragment3 extends Fragment implements GoogleApiClient.OnConnectionFailedListener,
-        View.OnClickListener,
-        LocationListener {
+public class MapFragment3 extends Fragment  {
 
     MapView mMapView;
     private GoogleMap googleMap;
@@ -88,13 +84,6 @@ public class MapFragment3 extends Fragment implements GoogleApiClient.OnConnecti
 
         drawPrimaryLinePath(listLocsToDraw);
 
-
-        mGoogleApiClient
-                = new GoogleApiClient.Builder(getActivity())
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
 
         return v;
     }
@@ -164,46 +153,6 @@ public class MapFragment3 extends Fragment implements GoogleApiClient.OnConnecti
         mMapView.onLowMemory();
     }
 
-    private final GoogleApiClient.ConnectionCallbacks mConnectionCallbacks = new GoogleApiClient.ConnectionCallbacks() {
-        @Override
-        public void onConnected(Bundle bundle) {
-                LocationServices.FusedLocationApi.setMockMode(mGoogleApiClient, true);
-                new MockLocationMovingHandler(mGoogleApiClient).start(48.873399, 2.342911);
-        }
 
-        @Override
-        public void onConnectionSuspended(int i) {
 
-        }
-    };
-
-    @Override
-    public void onLocationChanged(Location location) {
-
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
-    }
-
-    @Override
-    public void onClick(View v) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-
-    }
 }

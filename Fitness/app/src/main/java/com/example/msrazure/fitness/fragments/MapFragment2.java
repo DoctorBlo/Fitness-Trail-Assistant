@@ -1,8 +1,7 @@
 package com.example.msrazure.fitness.fragments;
 
-/**
- * Created by Polina on 16.12.15.
- */
+import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.msrazure.fitness.R;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -18,14 +18,18 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.util.ArrayList;
 
 /**
- * A fragment that launches other parts of the demo application.
+ * Created by Polina on 17.01.2016.
  */
-public class MapFragment2 extends Fragment {
+public class MapFragment2 extends Fragment  {
 
     MapView mMapView;
     private GoogleMap googleMap;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,8 +69,74 @@ public class MapFragment2 extends Fragment {
                 .newCameraPosition(cameraPosition));
 
         // Perform any camera updates here
+        ArrayList<Location> listLocsToDraw = new ArrayList<>() ;
+
+        Location loc1 = new Location("");
+        loc1.setLatitude(42.648549);
+        loc1.setLongitude(-73.982156);
+        listLocsToDraw.add(loc1);
+
+        Location loc2 = new Location("");
+        loc2.setLatitude(42.649433);
+        loc2.setLongitude(-73.981112);
+        listLocsToDraw.add(loc2);
+
+        Location loc3 = new Location("");
+        loc3.setLatitude(42.649900);
+        loc3.setLongitude(-73.982156);
+        listLocsToDraw.add(loc3);
+
+        Location loc4 = new Location("");
+        loc4.setLatitude(42.6512300);
+        loc4.setLongitude(-73.981112);
+        listLocsToDraw.add(loc4);
+
+        drawPrimaryLinePath(listLocsToDraw);
+
+
         return v;
     }
+
+    private void drawPrimaryLinePath( ArrayList<Location> listLocsToDraw )
+    {
+        if ( googleMap == null )
+        {
+            return;
+        }
+
+        if ( listLocsToDraw.size() < 2 )
+        {
+            return;
+        }
+
+        PolylineOptions options = new PolylineOptions();
+
+        options.color( Color.parseColor("#CC0000FF") );
+        options.width( 5 );
+        options.visible(true);
+
+        for ( Location locRecorded : listLocsToDraw )
+        {
+            // create marker
+            MarkerOptions marker = new MarkerOptions().position(
+                    new LatLng(locRecorded.getLatitude(), locRecorded.getLongitude())).title("New York");
+
+            // Changing marker icon
+            marker.icon(BitmapDescriptorFactory
+                    .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
+
+
+            googleMap.addMarker(marker);
+
+
+            options.add( new LatLng( locRecorded.getLatitude(),
+                    locRecorded.getLongitude() ) );
+        }
+
+        googleMap.addPolyline(options);
+
+    }
+
 
     @Override
     public void onResume() {
@@ -91,4 +161,7 @@ public class MapFragment2 extends Fragment {
         super.onLowMemory();
         mMapView.onLowMemory();
     }
+
+
+
 }
